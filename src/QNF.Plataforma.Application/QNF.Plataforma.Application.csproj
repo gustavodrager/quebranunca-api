@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\QNF.Plataforma.Core\QNF.Plataforma.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -11,4 +11,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\QNF.Plataforma.Application\QNF.Plataforma.Application.csproj" />
+    <ProjectReference Include="..\QNF.Plataforma.Infrastructure\QNF.Plataforma.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
