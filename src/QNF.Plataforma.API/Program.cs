@@ -1,4 +1,6 @@
 using QNF.Plataforma.Application.Jogadores.Handlers;
+using QNF.Plataforma.Application.Jogos.Handlers;
+using QNF.Plataforma.Application.Rankings.Services;
 using QNF.Plataforma.Core.Interfaces;
 using QNF.Plataforma.Infrastructure.Repositories;
 
@@ -11,6 +13,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IJogadorRepository, JogadorRepository>();
 builder.Services.AddScoped<CriarJogadorHandler>();
+builder.Services.AddScoped<ValidarJogoHandler>();
+builder.Services.AddScoped<RankingUpdater>();
 
 var app = builder.Build();
 
