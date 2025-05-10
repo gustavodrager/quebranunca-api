@@ -1,0 +1,11 @@
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Core/bin/Debug/net8.0/QNF.Plataforma.Core.deps.json
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Core/bin/Debug/net8.0/QNF.Plataforma.Core.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Core/bin/Debug/net8.0/QNF.Plataforma.Core.pdb
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Core/obj/Debug/net8.0/QNF.Plataforma.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Core/obj/Debug/net8.0/QNF.Plataforma.Core.AssemblyInfoInputs.cache
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Core/obj/Debug/net8.0/QNF.Plataforma.Core.AssemblyInfo.cs
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Core/obj/Debug/net8.0/QNF.Plataforma.Core.csproj.CoreCompileInputs.cache
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Core/obj/Debug/net8.0/QNF.Plataforma.Core.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Core/obj/Debug/net8.0/refint/QNF.Plataforma.Core.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Core/obj/Debug/net8.0/QNF.Plataforma.Core.pdb
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Core/obj/Debug/net8.0/ref/QNF.Plataforma.Core.dll

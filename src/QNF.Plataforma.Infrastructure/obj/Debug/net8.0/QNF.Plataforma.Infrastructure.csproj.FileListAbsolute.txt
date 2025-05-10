@@ -1,0 +1,17 @@
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/bin/Debug/net8.0/QNF.Plataforma.Infrastructure.deps.json
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/bin/Debug/net8.0/QNF.Plataforma.Infrastructure.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/bin/Debug/net8.0/QNF.Plataforma.Infrastructure.pdb
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/bin/Debug/net8.0/QNF.Plataforma.Core.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/bin/Debug/net8.0/QNF.Plataforma.Core.pdb
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/obj/Debug/net8.0/QNF.Plataforma.Infrastructure.csproj.AssemblyReference.cache
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/obj/Debug/net8.0/QNF.Plataforma.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/obj/Debug/net8.0/QNF.Plataforma.Infrastructure.AssemblyInfoInputs.cache
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/obj/Debug/net8.0/QNF.Plataforma.Infrastructure.AssemblyInfo.cs
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/obj/Debug/net8.0/QNF.Plataforma.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/obj/Debug/net8.0/QNF.Plat.D7D64508.Up2Date
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/obj/Debug/net8.0/QNF.Plataforma.Infrastructure.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/obj/Debug/net8.0/refint/QNF.Plataforma.Infrastructure.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/obj/Debug/net8.0/QNF.Plataforma.Infrastructure.pdb
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/obj/Debug/net8.0/ref/QNF.Plataforma.Infrastructure.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/bin/Debug/net8.0/QNF.Plataforma.Application.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Infrastructure/bin/Debug/net8.0/QNF.Plataforma.Application.pdb

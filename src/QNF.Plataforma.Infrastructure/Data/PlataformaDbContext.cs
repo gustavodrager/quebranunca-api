@@ -17,6 +17,7 @@ public class PlataformaDbContext : DbContext
     public DbSet<Jogo> Jogos => Set<Jogo>();
     public DbSet<ValidacaoJogo> Validacoes => Set<ValidacaoJogo>();
     public DbSet<Ranking> Rankings => Set<Ranking>();
+    public DbSet<User> Users => Set<User>();
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -29,5 +30,11 @@ public class PlataformaDbContext : DbContext
         modelBuilder.Entity<Jogo>().ToTable("Jogos");
         modelBuilder.Entity<ValidacaoJogo>().ToTable("Validacoes");
         modelBuilder.Entity<Ranking>().ToTable("Rankings");
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(u => u.Id);
+            entity.Property(u => u.Email).IsRequired();
+            entity.Property(u => u.PasswordHash).IsRequired();
+        });
     }
 }

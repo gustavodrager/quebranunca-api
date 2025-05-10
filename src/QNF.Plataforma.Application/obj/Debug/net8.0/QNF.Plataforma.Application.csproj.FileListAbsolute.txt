@@ -1,0 +1,15 @@
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/bin/Debug/net8.0/QNF.Plataforma.Application.deps.json
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/bin/Debug/net8.0/QNF.Plataforma.Application.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/bin/Debug/net8.0/QNF.Plataforma.Application.pdb
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/bin/Debug/net8.0/QNF.Plataforma.Core.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/bin/Debug/net8.0/QNF.Plataforma.Core.pdb
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/obj/Debug/net8.0/QNF.Plataforma.Application.csproj.AssemblyReference.cache
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/obj/Debug/net8.0/QNF.Plataforma.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/obj/Debug/net8.0/QNF.Plataforma.Application.AssemblyInfoInputs.cache
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/obj/Debug/net8.0/QNF.Plataforma.Application.AssemblyInfo.cs
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/obj/Debug/net8.0/QNF.Plataforma.Application.csproj.CoreCompileInputs.cache
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/obj/Debug/net8.0/QNF.Plat.3C83EEA4.Up2Date
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/obj/Debug/net8.0/QNF.Plataforma.Application.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/obj/Debug/net8.0/refint/QNF.Plataforma.Application.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/obj/Debug/net8.0/QNF.Plataforma.Application.pdb
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/obj/Debug/net8.0/ref/QNF.Plataforma.Application.dll

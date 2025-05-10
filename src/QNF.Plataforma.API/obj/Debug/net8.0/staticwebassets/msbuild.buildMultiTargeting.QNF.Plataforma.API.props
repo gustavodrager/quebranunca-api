@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/QNF.Plataforma.API.props" />
+</Project>

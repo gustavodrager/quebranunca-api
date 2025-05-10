@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/QNF.Plataforma.API.props" />
+</Project>

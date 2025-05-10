@@ -4,7 +4,6 @@ public class Dupla : BaseEntity
 {
     public Guid Jogador1Id { get; private set; }
     public Guid Jogador2Id { get; private set; }
-    public DateTime DataCriacao { get; private set; }
 
     private Dupla() { }
 
@@ -15,6 +14,5 @@ public class Dupla : BaseEntity
 
         Jogador1Id = jogador1Id;
         Jogador2Id = jogador2Id;
-        DataCriacao = DateTime.UtcNow;
     }
 }

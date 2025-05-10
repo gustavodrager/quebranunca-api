@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "IAj02YqDALY=",
+  "dgSpecHash": "nLbllIGDhdM=",
   "success": true,
   "projectFilePath": "/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.Application/QNF.Plataforma.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/gustavodrager/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

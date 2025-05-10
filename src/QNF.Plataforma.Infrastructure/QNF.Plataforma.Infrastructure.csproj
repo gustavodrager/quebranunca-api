@@ -7,12 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.12.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.9.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.9.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\QNF.Plataforma.Core\QNF.Plataforma.Core.csproj" />
+    <ProjectReference Include="..\QNF.Plataforma.Application\QNF.Plataforma.Application.csproj" />
   </ItemGroup>
 
 </Project>
