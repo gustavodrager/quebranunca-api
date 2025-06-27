@@ -82,6 +82,10 @@ builder.Services.AddScoped<IValidacaoJogoRepository, ValidacaoJogoRepository>();
 builder.Services.AddScoped<IRankingRepository, RankingRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+builder.Services.AddScoped<CriarJogadorHandler>();
+builder.Services.AddScoped<CriarGrupoHandler>();
+builder.Services.AddScoped<AdicionarJogadorAoGrupoHandler>();
+builder.Services.AddScoped<CriarDuplaHandler>();
 builder.Services.AddScoped<RegistrarJogoHandler>();
 builder.Services.AddScoped<ValidarJogoHandler>();
 builder.Services.AddScoped<RankingUpdater>();

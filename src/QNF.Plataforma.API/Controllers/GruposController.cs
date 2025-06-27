@@ -13,9 +13,10 @@ public class GruposController : ControllerBase
     private readonly CriarGrupoHandler _handler;
     private readonly AdicionarJogadorAoGrupoHandler _adicionarJogadorHandler;
 
-    public GruposController(CriarGrupoHandler handler)
+    public GruposController(CriarGrupoHandler handler, AdicionarJogadorAoGrupoHandler adicionarJogadorHandler)
     {
         _handler = handler;
+        _adicionarJogadorHandler = adicionarJogadorHandler;
     }
 
     [HttpPost]
