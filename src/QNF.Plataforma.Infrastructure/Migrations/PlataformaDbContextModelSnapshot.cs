@@ -48,6 +48,10 @@ namespace QNF.Plataforma.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Jogador1Id");
+
+                    b.HasIndex("Jogador2Id");
+
                     b.ToTable("Duplas", (string)null);
                 });
 
@@ -108,14 +112,17 @@ namespace QNF.Plataforma.Infrastructure.Migrations
                     b.Property<DateTime?>("DataNascimento")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<Guid?>("DuplaId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("FotoPerfilUrl")
                         .HasColumnType("text");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("TamanhoCamiseta")
@@ -124,7 +131,12 @@ namespace QNF.Plataforma.Infrastructure.Migrations
                     b.Property<string>("Telefone")
                         .HasColumnType("text");
 
+                    b.Property<Guid>("UsuarioId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("DuplaId");
 
                     b.ToTable("Jogadores", (string)null);
                 });
@@ -249,6 +261,8 @@ namespace QNF.Plataforma.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("JogadorId");
+
                     b.ToTable("Rankings", (string)null);
                 });
 
@@ -274,6 +288,9 @@ namespace QNF.Plataforma.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<Guid>("JogadorId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("text");
@@ -285,6 +302,8 @@ namespace QNF.Plataforma.Infrastructure.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("JogadorId");
 
                     b.ToTable("Users");
                 });
@@ -325,6 +344,59 @@ namespace QNF.Plataforma.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Validacoes", (string)null);
+                });
+
+            modelBuilder.Entity("QNF.Plataforma.Core.Entities.Dupla", b =>
+                {
+                    b.HasOne("QNF.Plataforma.Core.Entities.Jogador", "Jogador1")
+                        .WithMany()
+                        .HasForeignKey("Jogador1Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("QNF.Plataforma.Core.Entities.Jogador", "Jogador2")
+                        .WithMany()
+                        .HasForeignKey("Jogador2Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Jogador1");
+
+                    b.Navigation("Jogador2");
+                });
+
+            modelBuilder.Entity("QNF.Plataforma.Core.Entities.Jogador", b =>
+                {
+                    b.HasOne("QNF.Plataforma.Core.Entities.Dupla", null)
+                        .WithMany("Jogadores")
+                        .HasForeignKey("DuplaId");
+                });
+
+            modelBuilder.Entity("QNF.Plataforma.Core.Entities.Ranking", b =>
+                {
+                    b.HasOne("QNF.Plataforma.Core.Entities.Jogador", "Jogador")
+                        .WithMany()
+                        .HasForeignKey("JogadorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Jogador");
+                });
+
+            modelBuilder.Entity("QNF.Plataforma.Core.Entities.User", b =>
+                {
+                    b.HasOne("QNF.Plataforma.Core.Entities.Jogador", "Jogador")
+                        .WithMany()
+                        .HasForeignKey("JogadorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Jogador");
+                });
+
+            modelBuilder.Entity("QNF.Plataforma.Core.Entities.Dupla", b =>
+                {
+                    b.Navigation("Jogadores");
                 });
 #pragma warning restore 612, 618
         }

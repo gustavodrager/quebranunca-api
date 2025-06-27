@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using QNF.Plataforma.Application.Duplas.Commands;
 using QNF.Plataforma.Application.Duplas.Handlers;
@@ -5,6 +6,7 @@ using QNF.Plataforma.Application.Duplas.Handlers;
 namespace QNF.Plataforma.API.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class DuplasController : ControllerBase
 {

@@ -21,7 +21,7 @@ public class EmailSender : IEmailSender
         email.From.Add(MailboxAddress.Parse(_settings.Username));
         email.To.Add(MailboxAddress.Parse(to));
         email.Subject = subject;
-        email.Body = new TextPart(MimeKit.Text.TextFormat.Text) { Text = body };
+        email.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = body };
 
         using var smtp = new SmtpClient();
         await smtp.ConnectAsync(_settings.SmtpServer, _settings.SmtpPort, MailKit.Security.SecureSocketOptions.StartTls);

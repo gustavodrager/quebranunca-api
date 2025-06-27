@@ -38,4 +38,19 @@ public class RankingRepository : IRankingRepository
             .Where(r => r.GrupoId == grupoId)
             .ToListAsync();
     }
+
+    public async Task<List<Ranking>> ListarRankingGeralAsync()
+    {
+        return await _context.Rankings
+            .Include(r => r.Jogador) 
+            .GroupBy(r => r.JogadorId)
+            .Select(g => new Ranking
+            {
+                JogadorId = g.Key,
+                Jogos = g.Sum(x => x.Jogos),
+                Vitorias = g.Sum(x => x.Vitorias),
+                Derrotas = g.Sum(x => x.Derrotas)
+            })
+            .ToListAsync();
+    }
 }

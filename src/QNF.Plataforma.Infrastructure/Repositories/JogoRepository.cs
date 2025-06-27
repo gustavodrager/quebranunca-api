@@ -39,4 +39,20 @@ public class JogoRepository : IJogoRepository
             .OrderByDescending(j => j.DataHora)
             .ToListAsync();
     }
+
+    public async Task<Jogo?> ObterUltimoAprovadoAsync()
+    {
+        return await _context.Jogos
+            .Where(j => j.Status == JogoStatus.Aprovado)
+            .OrderByDescending(j => j.DataHora)
+            .FirstOrDefaultAsync();
+    }
+
+    public async Task<Jogo?> ObterUltimoAsync()
+    {
+        return await _context.Jogos
+            .Where(j => j.Status == JogoStatus.Aprovado)
+            .OrderByDescending(j => j.DataHora)
+            .FirstOrDefaultAsync();
+    }
 }

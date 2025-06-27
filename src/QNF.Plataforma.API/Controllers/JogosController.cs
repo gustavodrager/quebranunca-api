@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using QNF.Plataforma.API.Requests;
 using QNF.Plataforma.Application.Jogos.Commands;
@@ -6,6 +7,7 @@ using QNF.Plataforma.Application.Jogos.Handlers;
 namespace QNF.Plataforma.API.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class JogosController : ControllerBase
 {

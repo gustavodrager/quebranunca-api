@@ -10,26 +10,70 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using QNF.Plataforma.Application.Interfaces;
 using QNF.Plataforma.Application.Services;
-using QNF.Plataforma.API.Configurations;
-using QNF.Plataforma.Infrastructure.Services;
 using QNF.Plataforma.Application.Configurations;
+using QNF.Plataforma.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var frontOrigin = "http://localhost:5173";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("FrontCorsPolicy",
+        policy =>
+        {
+            policy.WithOrigins(frontOrigin)
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .AllowCredentials();
+        });
+});
 
 builder.Services.Configure<JwtConfiguration>(builder.Configuration.GetSection("JwtSettings"));
 
 builder.Services.AddDbContext<PlataformaDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
+      b => b.MigrationsAssembly("QNF.Plataforma.Infrastructure")));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new() { Title = "QNF Plataforma API", Version = "v1" });
+
+    c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header usando o esquema Bearer.\n\nDigite: Bearer {seu token}",
+        Name = "Authorization",
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+
+    c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
+
 
 builder.Services.Configure<EmailConfiguration>(builder.Configuration.GetSection("EmailConfiguration"));
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IJogadorService, JogadorService>();
 
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IJogadorRepository, JogadorRepository>();
 builder.Services.AddScoped<IGrupoRepository, GrupoRepository>();
 builder.Services.AddScoped<IDuplaRepository, DuplaRepository>();
@@ -43,6 +87,9 @@ builder.Services.AddScoped<ValidarJogoHandler>();
 builder.Services.AddScoped<RankingUpdater>();
 
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+
+var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtConfiguration>();
+
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -55,7 +102,7 @@ builder.Services
             ValidateIssuerSigningKey = true,
             ValidIssuer = "QNF.Plataforma",
             ValidAudience = "QNF.Plataforma",
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("sua-chave-secreta")),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key)),
             ClockSkew = TimeSpan.Zero
         };
     });
@@ -69,7 +116,10 @@ app.UseSwaggerUI(options =>
     options.RoutePrefix = string.Empty;
 });
 
+app.UseCors("FrontCorsPolicy");
+
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 

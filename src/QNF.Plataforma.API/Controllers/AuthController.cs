@@ -7,7 +7,6 @@ using QNF.Plataforma.Application.Interfaces;
 public class AuthController : ControllerBase
 {
     private readonly IAuthService _authService;
-
     public AuthController(IAuthService authService) => _authService = authService;
 
     [HttpPost("login")]
@@ -51,9 +50,9 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("reset-password")]
-    public async Task<IActionResult> ResetPassword(ResetPasswordRequest request)
+    public async Task<IActionResult> ResetPassword([FromQuery] string token, [FromBody] ResetPasswordBodyRequest request)
     {
-        var success = await _authService.ResetPasswordAsync(request.Email, request.Token, request.NewPassword);
+        var success = await _authService.ResetPasswordAsync(token, request.NewPassword);
         return success ? Ok(new { message = "Senha redefinida com sucesso" })
                     : BadRequest(new { message = "Token inválido ou expirado" });
     }

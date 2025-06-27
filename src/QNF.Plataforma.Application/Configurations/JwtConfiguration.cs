@@ -1,4 +1,4 @@
-namespace QNF.Plataforma.API.Configurations;
+namespace QNF.Plataforma.Application.Configurations;
 
 public class JwtConfiguration
 {

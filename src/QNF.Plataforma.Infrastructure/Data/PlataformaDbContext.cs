@@ -29,7 +29,12 @@ public class PlataformaDbContext : DbContext
         modelBuilder.Entity<Dupla>().ToTable("Duplas");
         modelBuilder.Entity<Jogo>().ToTable("Jogos");
         modelBuilder.Entity<ValidacaoJogo>().ToTable("Validacoes");
-        modelBuilder.Entity<Ranking>().ToTable("Rankings");
+        modelBuilder.Entity<Ranking>().ToTable("Rankings")
+            .HasOne(r => r.Jogador)
+            .WithMany() // ou .WithMany(j => j.Rankings) se quiser coleção no Jogador
+            .HasForeignKey(r => r.JogadorId)
+            .OnDelete(DeleteBehavior.Cascade);
+            
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(u => u.Id);

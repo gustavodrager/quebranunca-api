@@ -2,10 +2,15 @@ namespace QNF.Plataforma.Core.Entities;
 
 public class Dupla : BaseEntity
 {
-    public Guid Jogador1Id { get; private set; }
-    public Guid Jogador2Id { get; private set; }
+    public Guid Jogador1Id { get; set; }
+    public Guid Jogador2Id { get; set; }
 
-    private Dupla() { }
+    public Jogador Jogador1 { get; set; } = null!;
+    public Jogador Jogador2 { get; set; } = null!;
+
+    public IEnumerable<Jogador> Jogadores => new[] { Jogador1, Jogador2 };
+
+    public Dupla() { }
 
     public Dupla(Guid jogador1Id, Guid jogador2Id)
     {

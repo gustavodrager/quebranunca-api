@@ -1,3 +1,6 @@
 namespace QNF.Plataforma.Application.DTOs;
 
-public record ResetPasswordRequest(string Email, string Token, string NewPassword);
+public class ResetPasswordBodyRequest
+{
+    public string NewPassword { get; set; } = string.Empty;
+}

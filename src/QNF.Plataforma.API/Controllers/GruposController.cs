@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using QNF.Plataforma.Application.Grupos.Commands;
 using QNF.Plataforma.Application.Grupos.Handlers;
@@ -5,6 +6,7 @@ using QNF.Plataforma.Application.Grupos.Handlers;
 namespace QNF.Plataforma.API.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class GruposController : ControllerBase
 {

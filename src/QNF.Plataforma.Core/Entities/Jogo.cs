@@ -2,20 +2,20 @@ namespace QNF.Plataforma.Core.Entities;
 
 public class Jogo : BaseEntity
 {
-    public Guid GrupoId { get; private set; }
-    public Guid Dupla1Id { get; private set; }
-    public Guid Dupla2Id { get; private set; }
+    public Guid GrupoId { get; set; }
+    public Guid Dupla1Id { get; set; }
+    public Guid Dupla2Id { get; set; }
 
-    public int PontuacaoDupla1 { get; private set; }
-    public int PontuacaoDupla2 { get; private set; }
+    public int PontuacaoDupla1 { get; set; }
+    public int PontuacaoDupla2 { get; set; }
 
-    public Guid CriadoPorJogadorId { get; private set; }
-    public DateTime DataHora { get; private set; }
-    public string? Local { get; private set; }
+    public Guid CriadoPorJogadorId { get; set; }
+    public DateTime DataHora { get; set; }
+    public string? Local { get; set; }
 
-    public JogoStatus Status { get; private set; } = JogoStatus.Pendente;
+    public JogoStatus Status { get; set; } = JogoStatus.Pendente;
 
-    private Jogo() { }
+    public Jogo() { }
 
     public Jogo(Guid grupoId, Guid dupla1Id, Guid dupla2Id, Guid criadoPorJogadorId, DateTime dataHora, string? local)
     {
