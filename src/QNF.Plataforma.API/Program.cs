@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using QNF.Plataforma.Application.Jogos.Handlers;
+using QNF.Plataforma.Application.Grupos.Handlers;
+using QNF.Plataforma.Application.Duplas.Handlers;
 using QNF.Plataforma.Application.Rankings.Services;
 using QNF.Plataforma.Core.Interfaces;
 using QNF.Plataforma.Infrastructure.Data;
@@ -82,7 +84,6 @@ builder.Services.AddScoped<IValidacaoJogoRepository, ValidacaoJogoRepository>();
 builder.Services.AddScoped<IRankingRepository, RankingRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
-builder.Services.AddScoped<CriarJogadorHandler>();
 builder.Services.AddScoped<CriarGrupoHandler>();
 builder.Services.AddScoped<AdicionarJogadorAoGrupoHandler>();
 builder.Services.AddScoped<CriarDuplaHandler>();

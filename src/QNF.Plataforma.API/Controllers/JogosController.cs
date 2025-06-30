@@ -14,9 +14,10 @@ public class JogosController : ControllerBase
     private readonly RegistrarJogoHandler _handler;
     private readonly ValidarJogoHandler _validarHandler;
 
-    public JogosController(RegistrarJogoHandler handler)
+    public JogosController(RegistrarJogoHandler handler, ValidarJogoHandler validarHandler)
     {
         _handler = handler;
+        _validarHandler = validarHandler;
     }
 
     [HttpPost]
