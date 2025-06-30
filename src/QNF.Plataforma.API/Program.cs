@@ -78,6 +78,7 @@ builder.Services.AddScoped<IJogadorService, JogadorService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IJogadorRepository, JogadorRepository>();
 builder.Services.AddScoped<IGrupoRepository, GrupoRepository>();
+builder.Services.AddScoped<IJogadorGrupoRepository, JogadorGrupoRepository>();
 builder.Services.AddScoped<IDuplaRepository, DuplaRepository>();
 builder.Services.AddScoped<IJogoRepository, JogoRepository>();
 builder.Services.AddScoped<IValidacaoJogoRepository, ValidacaoJogoRepository>();
