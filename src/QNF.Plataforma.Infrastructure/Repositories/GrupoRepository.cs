@@ -25,6 +25,11 @@ public class GrupoRepository : IGrupoRepository
         return await _context.Grupos.FirstOrDefaultAsync(g => g.Id == id);
     }
 
+        public async Task<Grupo?> ObterPorNomeAsync(string nome)
+    {
+        return await _context.Grupos.FirstOrDefaultAsync(g => g.Nome == nome);
+    }
+
     public async Task<List<Grupo>> ListarAsync()
     {
         return await _context.Grupos.ToListAsync();

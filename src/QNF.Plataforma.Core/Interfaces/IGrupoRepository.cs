@@ -6,5 +6,6 @@ public interface IGrupoRepository
 {
     Task AdicionarAsync(Grupo grupo);
     Task<Grupo?> ObterPorIdAsync(Guid id);
+    Task<Grupo?> ObterPorNomeAsync(string nome);
     Task<List<Grupo>> ListarAsync();
 }

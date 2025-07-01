@@ -22,11 +22,13 @@ public class RegistrarJogoHandler
 
     public async Task<Guid> Handle(RegistrarJogoCommand command)
     {
-        // Validações básicas (grupo e duplas existentes)
-        var grupo = await _grupoRepository.ObterPorIdAsync(command.GrupoId);
+        var grupo = await _grupoRepository.ObterPorNomeAsync(command.NomeGrupo);
         if (grupo is null)
-            throw new Exception("Grupo inválido.");
-
+        {
+            grupo = new Grupo(command.NomeGrupo, command.CriadoPorJogadorId);
+            grupo.MarcarCriacao(command.CriadoPorJogadorId);
+            await _grupoRepository.AdicionarAsync(grupo);
+        }
         var dupla1 = await _duplaRepository.ObterPorIdAsync(command.Dupla1Id);
         var dupla2 = await _duplaRepository.ObterPorIdAsync(command.Dupla2Id);
 
@@ -34,7 +36,7 @@ public class RegistrarJogoHandler
             throw new Exception("Uma ou ambas as duplas são inválidas.");
 
         var jogo = new Jogo(
-            command.GrupoId,
+            grupo.Id,
             command.Dupla1Id,
             command.Dupla2Id,
             command.CriadoPorJogadorId,

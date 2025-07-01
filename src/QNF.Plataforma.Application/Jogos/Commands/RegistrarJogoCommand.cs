@@ -1,7 +1,7 @@
 namespace QNF.Plataforma.Application.Jogos.Commands;
 
 public record RegistrarJogoCommand(
-    Guid GrupoId,
+    string NomeGrupo,
     Guid Dupla1Id,
     Guid Dupla2Id,
     Guid CriadoPorJogadorId,
