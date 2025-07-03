@@ -44,4 +44,9 @@ public class GameRepository : IGameRepository
             await _writeContext.SaveChangesAsync();
         }
     }
+
+    public async Task<IEnumerable<Game>> GetAllAsync()
+    {
+        return await _readContext.Games.AsNoTracking().ToListAsync();
+    }
 }

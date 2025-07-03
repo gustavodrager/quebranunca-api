@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MyApp.Application.Commands;
+using QNF.Application.DTOs;
 using QNF.Plataforma.Application.Queries;
 
 namespace QNF.Plataforma.API.Controllers;
@@ -25,6 +26,13 @@ public class GamesController : ControllerBase
         var query = new GetGameByIdQuery(id);
         var game = await _mediator.Send(query);
         return game is not null ? Ok(game) : NotFound();
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<GameDto>>> GetAll()
+    {
+        var games = await _mediator.Send(new GetAllGamesQuery());
+        return Ok(games);
     }
 
     [HttpPut("{id}")]

@@ -14,6 +14,12 @@ using QNF.Plataforma.Application.Interfaces;
 using QNF.Plataforma.Application.Services;
 using QNF.Plataforma.Application.Configurations;
 using QNF.Plataforma.Infrastructure.Services;
+using StackExchange.Redis;
+using System.Reflection;
+using MassTransit;
+using QNF.Plataforma.Infrastructure.Consumers;
+using QNF.Plataforma.API.Configurations;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -74,6 +80,13 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.AddMediatR(config =>
+{
+    config.RegisterServicesFromAssembly(typeof(QNF.Plataforma.Application.Handlers.GetAllGamesHandler).Assembly);
+    config.RegisterServicesFromAssembly(typeof(Program).Assembly);
+    config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+});
+
 builder.Services.Configure<EmailConfiguration>(builder.Configuration.GetSection("EmailConfiguration"));
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 
@@ -81,6 +94,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJogadorService, JogadorService>();
 builder.Services.AddScoped<IJogoService, JogoService>();
 builder.Services.AddScoped<IRankingService, RankingService>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IJogadorRepository, JogadorRepository>();
 builder.Services.AddScoped<IGrupoRepository, GrupoRepository>();
@@ -90,6 +104,8 @@ builder.Services.AddScoped<IJogoRepository, JogoRepository>();
 builder.Services.AddScoped<IValidacaoJogoRepository, ValidacaoJogoRepository>();
 builder.Services.AddScoped<IRankingRepository, RankingRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IJogadorGrupoRepository, JogadorGrupoRepository>();
+builder.Services.AddScoped<IGameRepository, GameRepository>();
 
 builder.Services.AddScoped<CriarGrupoHandler>();
 builder.Services.AddScoped<AdicionarJogadorAoGrupoHandler>();
@@ -97,6 +113,13 @@ builder.Services.AddScoped<CriarDuplaHandler>();
 builder.Services.AddScoped<RegistrarJogoHandler>();
 builder.Services.AddScoped<ValidarJogoHandler>();
 builder.Services.AddScoped<RankingUpdater>();
+
+builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+    ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("Redis")));
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("Redis");
+});
 
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
@@ -119,6 +142,29 @@ builder.Services
         };
     });
 
+builder.Services.Configure<RabbitMqSettings>(builder.Configuration.GetSection("RabbitMq"));
+
+builder.Services.AddMassTransit( x =>
+{
+    x.AddConsumer<GameCreatedConsumer>();
+    
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        var rabbit = context.GetRequiredService<IOptions<RabbitMqSettings>>().Value;
+
+        cfg.Host(rabbit.Host, rabbit.VirtualHost, h =>
+        {
+            h.Username(rabbit.Username);
+            h.Password(rabbit.Password);
+        });
+
+        cfg.ReceiveEndpoint("game-created-queue", e =>
+        {
+            e.ConfigureConsumer<GameCreatedConsumer>(context);
+        });
+    });
+});
+
 var app = builder.Build();
 
 app.UseSwagger();
@@ -129,6 +175,15 @@ app.UseSwaggerUI(options =>
 });
 
 app.UseCors("FrontCorsPolicy");
+
+using (var scope = app.Services.CreateScope())
+{
+    var writeCtx = scope.ServiceProvider.GetRequiredService<WriteDbContext>();
+    writeCtx.Database.EnsureCreated();
+
+    var readCtx = scope.ServiceProvider.GetRequiredService<ReadDbContext>();
+    readCtx.Database.EnsureCreated();
+}
 
 app.UseHttpsRedirection();
 app.UseAuthentication();

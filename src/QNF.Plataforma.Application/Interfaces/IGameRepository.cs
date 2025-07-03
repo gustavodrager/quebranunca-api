@@ -8,4 +8,5 @@ public interface IGameRepository
     Task<Game> GetByIdAsync(Guid id);
     Task UpdateAsync(Game game);
     Task DeleteAsync(Guid id);
+    Task<IEnumerable<Game>> GetAllAsync();  
 }
