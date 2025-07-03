@@ -18,11 +18,12 @@ public class PlataformaDbContext : DbContext
     public DbSet<ValidacaoJogo> Validacoes => Set<ValidacaoJogo>();
     public DbSet<Ranking> Rankings => Set<Ranking>();
     public DbSet<User> Users => Set<User>();
-    
+    public DbSet<Game> Games => Set<Game>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        
+
         modelBuilder.Entity<Jogador>().ToTable("Jogadores");
         modelBuilder.Entity<Grupo>().ToTable("Grupos");
         modelBuilder.Entity<JogadorGrupo>().ToTable("JogadorGrupos");
@@ -31,15 +32,26 @@ public class PlataformaDbContext : DbContext
         modelBuilder.Entity<ValidacaoJogo>().ToTable("Validacoes");
         modelBuilder.Entity<Ranking>().ToTable("Rankings")
             .HasOne(r => r.Jogador)
-            .WithMany() // ou .WithMany(j => j.Rankings) se quiser coleção no Jogador
+            .WithMany()
             .HasForeignKey(r => r.JogadorId)
             .OnDelete(DeleteBehavior.Cascade);
-            
+
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(u => u.Id);
             entity.Property(u => u.Email).IsRequired();
             entity.Property(u => u.PasswordHash).IsRequired();
+        });
+        
+        modelBuilder.Entity<Game>(entity =>
+        {
+            entity.HasKey(g => g.Id);
+            entity.Property(g => g.RightPlayerTeamA).IsRequired();
+            entity.Property(g => g.LeftPlayerTeamA).IsRequired();
+            entity.Property(g => g.PointsTeamA).IsRequired();
+            entity.Property(g => g.RightPlayerTeamB).IsRequired();
+            entity.Property(g => g.LeftPlayerTeamB).IsRequired();
+            entity.Property(g => g.PointsTeamB).IsRequired();
         });
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Wx1huL4Kgd8=",
+  "dgSpecHash": "eurH74sSDlE=",
   "success": true,
   "projectFilePath": "/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.API/QNF.Plataforma.API.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,8 @@
     "/Users/gustavodrager/.nuget/packages/bouncycastle.cryptography/2.5.1/bouncycastle.cryptography.2.5.1.nupkg.sha512",
     "/Users/gustavodrager/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/gustavodrager/.nuget/packages/mailkit/4.12.0/mailkit.4.12.0.nupkg.sha512",
+    "/Users/gustavodrager/.nuget/packages/mediatr/13.0.0/mediatr.13.0.0.nupkg.sha512",
+    "/Users/gustavodrager/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
     "/Users/gustavodrager/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.0/microsoft.aspnetcore.authentication.jwtbearer.7.0.0.nupkg.sha512",
     "/Users/gustavodrager/.nuget/packages/microsoft.aspnetcore.openapi/8.0.8/microsoft.aspnetcore.openapi.8.0.8.nupkg.sha512",
     "/Users/gustavodrager/.nuget/packages/microsoft.bcl.asyncinterfaces/7.0.0/microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",

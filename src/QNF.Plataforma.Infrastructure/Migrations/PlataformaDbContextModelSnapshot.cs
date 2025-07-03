@@ -17,7 +17,7 @@ namespace QNF.Plataforma.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.4")
+                .HasAnnotation("ProductVersion", "9.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -116,7 +116,6 @@ namespace QNF.Plataforma.Infrastructure.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("FotoPerfilUrl")
@@ -124,6 +123,9 @@ namespace QNF.Plataforma.Infrastructure.Migrations
 
                     b.Property<string>("Nome")
                         .HasColumnType("text");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
 
                     b.Property<string>("TamanhoCamiseta")
                         .HasColumnType("text");

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using QNF.Plataforma.Core.Entities;
+using QNF.Plataforma.Core.Enums;
 using QNF.Plataforma.Core.Interfaces;
 using QNF.Plataforma.Infrastructure.Data;
 

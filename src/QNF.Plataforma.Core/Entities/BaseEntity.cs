@@ -5,7 +5,6 @@ public abstract class BaseEntity
     public Guid Id { get; init; } = Guid.NewGuid();
     public DateTime DataCriacao { get; private set; } = DateTime.UtcNow;
     public DateTime? DataAtualizacao { get; private set; }
-
     public Guid? CriadoPor { get; private set; }
     public Guid? AtualizadoPor { get; private set; }
 

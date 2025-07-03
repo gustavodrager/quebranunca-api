@@ -1,3 +1,5 @@
+using QNF.Plataforma.Core.Enums;
+
 namespace QNF.Plataforma.Core.Entities;
 
 public class Jogador : BaseEntity
@@ -7,13 +9,14 @@ public class Jogador : BaseEntity
     public string? Apelido { get; set; }
     public string? FotoPerfilUrl { get; set; }
     public string? Telefone { get; set; }
-    public string Email { get; set; }
+    public string? Email { get; set; }
     public string? TamanhoCamiseta { get; set; }
     public DateTime? DataNascimento { get; set; }
-
+    public StatusEntidade Status { get; set; } = StatusEntidade.Pendente;
+    
     public Jogador() { }
 
-    public Jogador(Guid usuarioId, string nome, string? apelido = null, string? telefone = null, string? email = null)
+    public Jogador(Guid usuarioId, string? nome, string? apelido = null, string? telefone = null, string? email = null)
     {
         UsuarioId = usuarioId;
         Nome = nome;

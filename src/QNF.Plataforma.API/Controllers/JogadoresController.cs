@@ -54,7 +54,7 @@ public class JogadoresController : ControllerBase
             jogador.Email
         });
     }
-    
+
     [HttpPatch("me")]
     public async Task<IActionResult> AtualizarPerfil([FromBody] AtualizarPerfilRequest request)
     {
@@ -64,5 +64,15 @@ public class JogadoresController : ControllerBase
         await _service.AtualizarNomeAsync(Guid.Parse(jogadorId), request.Nome);
 
         return NoContent();
+    }
+    
+    [HttpGet("buscar")]
+    public async Task<IActionResult> BuscarPorPrefixo([FromQuery] string prefixo)
+    {
+        if (string.IsNullOrWhiteSpace(prefixo) || prefixo.Length < 3)
+            return BadRequest("Informe pelo menos 3 letras para buscar.");
+
+        var jogadores = await _service.BuscarPorPrefixoAsync(prefixo);
+        return Ok(jogadores);
     }
 }

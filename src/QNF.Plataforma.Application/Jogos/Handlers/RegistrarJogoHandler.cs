@@ -29,6 +29,7 @@ public class RegistrarJogoHandler
             grupo.MarcarCriacao(command.CriadoPorJogadorId);
             await _grupoRepository.AdicionarAsync(grupo);
         }
+        
         var dupla1 = await _duplaRepository.ObterPorIdAsync(command.Dupla1Id);
         var dupla2 = await _duplaRepository.ObterPorIdAsync(command.Dupla2Id);
 

@@ -1,6 +1,21 @@
 version: '3.9'
 
 services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__WriteConnection=Host=postgres;Port=5432;Database=MyAppWrite;Username=postgres;Password=YourPassword
+      - ConnectionStrings__ReadConnection=Host=postgres;Port=5432;Database=MyAppRead;Username=postgres;Password=YourPassword  
+    depends_on:
+      - postgres
+      - rabbitmq
+      - redis
+      
   postgres:
     image: postgres:15
     container_name: qnf-postgres
@@ -21,6 +36,15 @@ services:
       - "6379:6379"
     volumes:
       - redisdata:/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
 
 volumes:
   pgdata:

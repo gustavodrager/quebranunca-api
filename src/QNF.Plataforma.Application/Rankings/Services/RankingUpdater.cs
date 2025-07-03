@@ -1,4 +1,5 @@
 using QNF.Plataforma.Core.Entities;
+using QNF.Plataforma.Core.Enums;
 using QNF.Plataforma.Core.Interfaces;
 
 namespace QNF.Plataforma.Application.Rankings.Services;

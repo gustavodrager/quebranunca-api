@@ -37,6 +37,12 @@ builder.Services.AddDbContext<PlataformaDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
       b => b.MigrationsAssembly("QNF.Plataforma.Infrastructure")));
 
+builder.Services.AddDbContext<WriteDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("WriteConnection")));
+    
+builder.Services.AddDbContext<ReadDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("ReadConnection")));
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -68,13 +74,13 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
 builder.Services.Configure<EmailConfiguration>(builder.Configuration.GetSection("EmailConfiguration"));
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJogadorService, JogadorService>();
-
+builder.Services.AddScoped<IJogoService, JogoService>();
+builder.Services.AddScoped<IRankingService, RankingService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IJogadorRepository, JogadorRepository>();
 builder.Services.AddScoped<IGrupoRepository, GrupoRepository>();

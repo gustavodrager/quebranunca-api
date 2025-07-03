@@ -37,7 +37,6 @@ public class ValidarJogoHandler
         var validacao = new ValidacaoJogo(command.JogoId, command.JogadorId, command.Status, command.Comentario);
         await _validacaoRepository.AdicionarAsync(validacao);
 
-        // Obtem todas validações feitas para o jogo
         var validacoes = await _validacaoRepository.ObterPorJogoAsync(command.JogoId);
 
         var dupla1 = await _duplaRepository.ObterPorIdAsync(jogo.Dupla1Id);

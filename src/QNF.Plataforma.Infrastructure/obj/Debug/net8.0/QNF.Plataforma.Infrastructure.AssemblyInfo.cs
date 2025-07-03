@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QNF.Plataforma.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c2c779a486bd4d4f03c30c9a93f0b81a386f3029")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10f61c487bfc751bcfba10f7d39934e439181139")]
 [assembly: System.Reflection.AssemblyProductAttribute("QNF.Plataforma.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QNF.Plataforma.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

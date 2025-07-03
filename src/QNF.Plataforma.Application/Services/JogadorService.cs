@@ -1,5 +1,7 @@
+using QNF.Plataforma.Application.DTOs;
 using QNF.Plataforma.Application.Interfaces;
 using QNF.Plataforma.Core.Entities;
+using QNF.Plataforma.Core.Enums;
 using QNF.Plataforma.Core.Interfaces;
 
 namespace QNF.Plataforma.Application.Services;
@@ -53,5 +55,19 @@ public class JogadorService : IJogadorService
 
         jogador.AtualizarNome(nome);
         await _unitOfWork.CommitAsync();
+    }
+
+    public async Task<IEnumerable<JogadorResponse>> BuscarPorPrefixoAsync(string prefixo)
+    {
+        var jogadores = await _repo.BuscarPorPrefixoAsync(prefixo);
+
+        return jogadores
+            .Where(j => j.Status != StatusEntidade.Inativo)
+            .Select(j => new JogadorResponse
+            {
+                Id = j.Id,
+                Nome = j.Nome!,
+                Apelido = j.Apelido
+            });
     }
 }
