@@ -1,6 +1,5 @@
 using QNF.Plataforma.Application.DTOs;
 using QNF.Plataforma.Core.Entities;
-using Microsoft.Extensions.Configuration;
 using System.Security.Claims;
 using System.Text;
 using QNF.Plataforma.Core.Interfaces;
@@ -8,6 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Options;
 using QNF.Plataforma.Application.Configurations;
+using System.Security.Cryptography;
 
 namespace QNF.Plataforma.Infrastructure.Security;
 
@@ -31,16 +31,32 @@ public class JwtTokenGenerator : IJwtTokenGenerator
             new Claim(JwtRegisteredClaimNames.Email, user.Email)
         };
 
+        var accessTokenExpiresAt = DateTime.UtcNow.AddMinutes(_configuration.AccessTokenExpiryMinutes);
+        var refreshTokenExpiresAt = DateTime.UtcNow.AddDays(_configuration.RefreshTokenExpiryDays);
+
         var token = new JwtSecurityToken(
             issuer: _configuration.Issuer,
             audience: _configuration.Audience,
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(15),
+            expires: accessTokenExpiresAt,
             signingCredentials: creds
         );
 
-        var refreshToken = Guid.NewGuid().ToString();
+        var accessToken = new JwtSecurityTokenHandler().WriteToken(token);
+        var refreshToken = GenerateSecureRefreshToken();
 
-        return new AuthResponse(new JwtSecurityTokenHandler().WriteToken(token), refreshToken);
+        return new AuthResponse(
+            accessToken,
+            accessTokenExpiresAt,
+            refreshToken,
+            refreshTokenExpiresAt
+        );
+    }
+    private string GenerateSecureRefreshToken()
+    {
+        var randomBytes = new byte[64];
+        using var rng = RandomNumberGenerator.Create();
+        rng.GetBytes(randomBytes);
+        return Convert.ToBase64String(randomBytes);
     }
 }

@@ -164,3 +164,8 @@
 /Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.API/bin/Debug/net8.0/MassTransit.Abstractions.dll
 /Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.API/bin/Debug/net8.0/MassTransit.RabbitMqTransport.dll
 /Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.API/bin/Debug/net8.0/RabbitMQ.Client.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.API/bin/Debug/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.API/bin/Debug/net8.0/Microsoft.Extensions.Hosting.Abstractions.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.API/bin/Debug/net8.0/Microsoft.Extensions.ObjectPool.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.API/bin/Debug/net8.0/Microsoft.Extensions.WebEncoders.dll
+/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.API/bin/Debug/net8.0/System.Security.Cryptography.Xml.dll

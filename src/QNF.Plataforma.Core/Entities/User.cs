@@ -1,16 +1,21 @@
+using QNF.Plataforma.Core.ValueObjects;
+
 namespace QNF.Plataforma.Core.Entities;
 
 public class User : BaseEntity
 {
-    public string Email { get; private set; }
-    public string PasswordHash { get; private set; }
+    public Email Email { get; private set; }
+    public Password Password { get; private set; }
+    public string? FullName { get; set; }
     public string? RefreshToken { get; private set; }
     public DateTime RefreshTokenExpiry { get; private set; }
 
-    public User(string email, string passwordHash)
+    protected User() { }
+
+    public User(Email email, Password password)
     {
         Email = email;
-        PasswordHash = passwordHash;
+        Password = password;
     }
 
     public void SetRefreshToken(string refreshToken, DateTime expiry)
@@ -19,8 +24,8 @@ public class User : BaseEntity
         RefreshTokenExpiry = expiry;
     }
 
-    public void UpdatePassword(string newPasswordHash)
+    public void UpdatePassword(Password newPassword)
     {
-        PasswordHash = newPasswordHash;
+        Password = newPassword;
     }
 }

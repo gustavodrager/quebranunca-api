@@ -19,12 +19,26 @@ public class UserRepository : IUserRepository
 
     public async Task<User?> GetByEmailAsync(string email)
     {
-        return await _readContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+        return await _readContext.Users
+            .AsNoTracking()
+            .FirstOrDefaultAsync(u => u.Email == email);
     }
 
     public async Task<User?> GetByRefreshTokenAsync(string refreshToken)
     {
-        return await _readContext.Users.FirstOrDefaultAsync(u => u.RefreshToken == refreshToken);
+        return await _readContext.Users
+            .AsNoTracking()
+            .FirstOrDefaultAsync(u => u.RefreshToken == refreshToken);
+    }
+
+    public async Task<bool> ExistsByEmailAsync(string email)
+    {
+        if (string.IsNullOrWhiteSpace(email))
+            throw new ArgumentException("O e-mail é obrigatório.", nameof(email));
+
+        return await _readContext.Users
+            .AsNoTracking()
+            .AnyAsync(u => u.Email == email);
     }
 
     public async Task AddAsync(User user)
