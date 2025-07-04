@@ -8,7 +8,6 @@ namespace QNF.Plataforma.Application.Services;
 public class AuthService : IAuthService
 {
     private readonly IUserRepository _userRepository;
-    private readonly IJogadorRepository _jogadorRepository;
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IEmailSender _emailSender;
     private readonly IUnitOfWork _unitOfWork;
@@ -17,13 +16,11 @@ public class AuthService : IAuthService
         IUserRepository userRepository,
         IJwtTokenGenerator jwtTokenGenerator,
         IEmailSender emailSender,
-        IJogadorRepository jogadorRepository,
         IUnitOfWork unitOfWork)
     {
         _userRepository = userRepository;
         _jwtTokenGenerator = jwtTokenGenerator;
         _emailSender = emailSender;
-        _jogadorRepository = jogadorRepository;
         _unitOfWork = unitOfWork;
     }
 
@@ -33,18 +30,11 @@ public class AuthService : IAuthService
         if (existingUser != null)
             throw new InvalidOperationException("User already exists");
 
-        var jogador = new Jogador
-        {
-            Email = request.Email
-        };
-
-        await _jogadorRepository.AdicionarAsync(jogador);
         await _unitOfWork.CommitAsync();
 
         var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
         var user = new User(request.Email, passwordHash);
 
-        user.AtribuirJogador(jogador.Id); 
 
         await _userRepository.AddAsync(user);
         await _unitOfWork.CommitAsync();

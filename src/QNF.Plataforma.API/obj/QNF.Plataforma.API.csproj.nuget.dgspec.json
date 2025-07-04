@@ -58,10 +58,6 @@
               "target": "Package",
               "version": "[13.0.0, )"
             },
-            "MediatR.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[11.1.0, )"
-            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[7.0.0, )"
@@ -170,10 +166,6 @@
             "MediatR": {
               "target": "Package",
               "version": "[13.0.0, )"
-            },
-            "MediatR.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[11.1.0, )"
             }
           },
           "imports": [

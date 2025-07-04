@@ -8,13 +8,14 @@ public class ReadDbContext : DbContext
         public ReadDbContext(DbContextOptions<ReadDbContext> options)
             : base(options) { }
 
+        public DbSet<User> Users { get; set; }
         public DbSet<Game> Games { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Game>(b =>
         {
-            modelBuilder.Entity<Game>(b =>
-            {
-                b.HasKey(g => g.Id);
-            });
-        }
+            b.HasKey(g => g.Id);
+        });
+    }
     }

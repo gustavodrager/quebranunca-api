@@ -8,32 +8,34 @@ namespace QNF.Plataforma.Infrastructure.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    private readonly PlataformaDbContext _context;
+    private readonly WriteDbContext _writeContext;
+    private readonly ReadDbContext _readContext;
 
-    public UserRepository(PlataformaDbContext context)
+    public UserRepository(WriteDbContext writeContext, ReadDbContext readContext)
     {
-        _context = context;
+        _writeContext = writeContext;
+        _readContext = readContext;
     }
 
     public async Task<User?> GetByEmailAsync(string email)
     {
-        return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        return await _readContext.Users.FirstOrDefaultAsync(u => u.Email == email);
     }
 
     public async Task<User?> GetByRefreshTokenAsync(string refreshToken)
     {
-        return await _context.Users.FirstOrDefaultAsync(u => u.RefreshToken == refreshToken);
+        return await _readContext.Users.FirstOrDefaultAsync(u => u.RefreshToken == refreshToken);
     }
 
     public async Task AddAsync(User user)
     {
-        await _context.Users.AddAsync(user);
-        await _context.SaveChangesAsync();
+        await _writeContext.Users.AddAsync(user);
+        await _writeContext.SaveChangesAsync();
     }
 
     public async Task UpdateAsync(User user)
     {
-        _context.Users.Update(user);
-        await _context.SaveChangesAsync();
+        _writeContext.Users.Update(user);
+        await _writeContext.SaveChangesAsync();
     }
 }

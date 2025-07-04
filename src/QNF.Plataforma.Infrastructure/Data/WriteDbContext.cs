@@ -8,6 +8,7 @@ public class WriteDbContext : DbContext
     public WriteDbContext(DbContextOptions<WriteDbContext> options)
         : base(options) { }
 
+    public DbSet<User> Users { get; set; }
     public DbSet<Game> Games { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

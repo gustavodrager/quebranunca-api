@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QNF.Plataforma.IntegrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+57c5d546c3a6af5a52783b3e6e542024d694716c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92afec59e334629fbb0147587dbbfff5782af85b")]
 [assembly: System.Reflection.AssemblyProductAttribute("QNF.Plataforma.IntegrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QNF.Plataforma.IntegrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UGlSuX6fAV0=",
+  "dgSpecHash": "VibZF8ZFqT8=",
   "success": true,
   "projectFilePath": "/Users/gustavodrager/QuebraNunca/quebranunca-api/src/QNF.Plataforma.API/QNF.Plataforma.API.csproj",
   "expectedPackageFiles": [
@@ -13,7 +13,6 @@
     "/Users/gustavodrager/.nuget/packages/masstransit.rabbitmq/8.5.0/masstransit.rabbitmq.8.5.0.nupkg.sha512",
     "/Users/gustavodrager/.nuget/packages/mediatr/13.0.0/mediatr.13.0.0.nupkg.sha512",
     "/Users/gustavodrager/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
-    "/Users/gustavodrager/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/11.1.0/mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
     "/Users/gustavodrager/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.0/microsoft.aspnetcore.authentication.jwtbearer.7.0.0.nupkg.sha512",
     "/Users/gustavodrager/.nuget/packages/microsoft.aspnetcore.openapi/8.0.8/microsoft.aspnetcore.openapi.8.0.8.nupkg.sha512",
     "/Users/gustavodrager/.nuget/packages/microsoft.bcl.asyncinterfaces/7.0.0/microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
@@ -86,16 +85,5 @@
     "/Users/gustavodrager/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512",
     "/Users/gustavodrager/.nuget/packages/system.threading.ratelimiting/8.0.0/system.threading.ratelimiting.8.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1608",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Detected package version outside of dependency constraint: MediatR.Extensions.Microsoft.DependencyInjection 11.1.0 requires MediatR (>= 11.0.0 && < 12.0.0) but version MediatR 13.0.0 was resolved.",
-      "libraryId": "MediatR",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "logs": []
 }

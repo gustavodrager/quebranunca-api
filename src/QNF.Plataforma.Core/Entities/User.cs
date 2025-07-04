@@ -6,8 +6,6 @@ public class User : BaseEntity
     public string PasswordHash { get; private set; }
     public string? RefreshToken { get; private set; }
     public DateTime RefreshTokenExpiry { get; private set; }
-    public Guid JogadorId { get; set; }
-    public Jogador Jogador { get; set; }
 
     public User(string email, string passwordHash)
     {
@@ -24,13 +22,5 @@ public class User : BaseEntity
     public void UpdatePassword(string newPasswordHash)
     {
         PasswordHash = newPasswordHash;
-    }
-
-    public void AtribuirJogador(Guid jogadorId)
-    {
-        if (jogadorId == Guid.Empty)
-            throw new ArgumentException("JogadorId não pode ser vazio.", nameof(jogadorId));
-
-        JogadorId = jogadorId;
     }
 }

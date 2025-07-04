@@ -5,9 +5,9 @@ namespace QNF.Plataforma.Infrastructure.Data;
 
 public class UnitOfWork : IUnitOfWork
 {
-    private readonly PlataformaDbContext _context;
+    private readonly WriteDbContext _context;
 
-    public UnitOfWork(PlataformaDbContext context)
+    public UnitOfWork(WriteDbContext context)
     {
         _context = context;
     }

@@ -15,7 +15,6 @@
     <PackageReference Include="MassTransit" Version="8.5.0" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.5.0" />
     <PackageReference Include="MediatR" Version="13.0.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
   </ItemGroup>
 
 </Project>
